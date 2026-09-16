@@ -98,4 +98,37 @@ function renderRekomendasi() {
     document.getElementById("list-rekomendasi").innerHTML = lowonganData.slice(0,2).map(cardLowongan).join("");
 }
 
-
+// --- detail & lamar (UC-04) --- 
+function lihatDetail(id) { 
+  const l = lowonganData.find(x => x.id === id); 
+  idLamaranAktif = id; 
+  document.getElementById("detail-content").innerHTML = ` 
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom:16px;"> 
+      <div class="job-logo" style="width:56px; height:56px;"></div> 
+      <div> 
+        <h2 style="margin:0;">${l.posisi}</h2> 
+        <p style="margin:2px 0; color:var(--ink-soft);">${l.perusahaan} · ${l.lokasi} · ${l.tipe} · ${l.bidang}</p> 
+      </div> 
+    </div> 
+    <h4>Deskripsi pekerjaan</h4> 
+    <p>${l.deskripsi}</p> 
+    <h4>Kriteria</h4> 
+    <p>${l.kriteria}</p> 
+    <div class="field" style="max-width:360px;"> 
+      <label>Unggah dokumen pendukung (PDF/JPG)</label> 
+      <input type="file" accept=".pdf,.jpg,.jpeg" id="input-lamar-dokumen"> 
+    </div> 
+    <button class="btn btn-primary" onclick="kirimLamaran(${l.id})">Lamar Sekarang</button> `; setPanel("detail"); 
+} 
+  
+function kembaliKeCari() { setPanel("cari"); } 
+  
+function kirimLamaran(idLowongan) { 
+  const sudahAda = lamaranSaya.find(x => x.idLowongan === idLowongan); 
+  if (sudahAda) { showToast("Anda sudah pernah melamar posisi ini"); return; } 
+  const l = lowonganData.find(x => x.id === idLowongan); 
+  lamaranSaya.push({ id: lamaranSaya.length + 1, idLowongan, posisi: l.posisi, perusahaan: l.perusahaan, status: "terkirim", tanggal: "Hari ini" }); 
+  showToast("Lamaran terkirim! Anda dapat memantau statusnya di menu 'Lamaran Saya'."); 
+  renderAll(); 
+  setPanel("lamaran"); 
+} 
