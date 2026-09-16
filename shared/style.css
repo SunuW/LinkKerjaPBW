@@ -174,3 +174,19 @@ ink); }
 .badge-aktif, .badge-diterima { background: #e7f9ef; color: var(--success); }
 .badge-nonaktif, .badge-ditolak { background: #fdecec; color: var(--danger); }
 .badge-ditinjau, .badge-terkirim { background: #fff4e0; color: var(--warning); }
+
+row {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 14px 0;
+ border-bottom: 1px solid var(--border);
+ gap: 14px;
+ flex-wrap: wrap;
+}
+.row:last-child { border-bottom: none; }
+.job-logo, .cand-avatar {
+ width: 44px; height: 44px; border-radius: 12px;
+ background: var(--gradient);
+ flex-shrink: 0;
+}
