@@ -93,3 +93,9 @@ CREATE TABLE notifikasi (
     sudah_dibaca  BOOLEAN NOT NULL DEFAULT FALSE,     
     dibuat_pada   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
     FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE );   
+INSERT INTO users (nama, email, password_hash, role, is_verified) VALUES 
+('Nabil Sunu Widyadhana', 'nabil@contoh.com', 'hash_dummy_1', 'perekrut', TRUE), 
+('Lathifah Widya Zahra', 'zahra@contoh.com', 'hash_dummy_2', 'pencari_kerja', TRUE);   
+INSERT INTO perusahaan (id_user, nama_perusahaan, bidang, lokasi, deskripsi) VALUES (1, 'PT Teknologi Madiun', 'Teknologi Informasi', 'Madiun, Jawa Timur', 'Perusahaan pengembang perangkat lunak.');   
+INSERT INTO profil_pencari_kerja (id_user, alamat, no_telepon, ringkasan) VALUES (2, 'Madiun, Jawa Timur', '081234567890', 'Mahasiswa TRPL yang tertarik pada pengembangan web.');   
+INSERT INTO lowongan (id_perusahaan, judul_posisi, bidang, lokasi, tipe_kerja, deskripsi, kriteria) VALUES (1, 'Frontend Developer', 'Teknologi Informasi', 'Madiun', 'full_time',  'Membangun antarmuka aplikasi web menggunakan HTML, CSS, dan JavaScript.',  'Menguasai HTML/CSS/JS, memahami dasar UI/UX.'); 
