@@ -11,3 +11,9 @@ JOIN users u ON u.id_user = pp.id_user
 WHERE a.id_lowongan = :id_lowongan 
 ORDER BY a.dikirim_pada DESC; 
 UPDATE lamaran SET status = :status_baru WHERE id_lamaran = :id_lamaran; 
+SELECT a.id_lamaran, lo.judul_posisi, pr.nama_perusahaan, a.status, a.dikirim_pada 
+FROM lamaran a 
+JOIN lowongan lo ON lo.id_lowongan = a.id_lowongan 
+JOIN perusahaan pr ON pr.id_perusahaan = lo.id_perusahaan 
+WHERE a.id_profil = :id_profil 
+ORDER BY a.dikirim_pada DESC; 
