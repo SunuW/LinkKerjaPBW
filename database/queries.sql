@@ -10,3 +10,4 @@ JOIN profil_pencari_kerja pp ON pp.id_profil = a.id_profil
 JOIN users u ON u.id_user = pp.id_user 
 WHERE a.id_lowongan = :id_lowongan 
 ORDER BY a.dikirim_pada DESC; 
+UPDATE lamaran SET status = :status_baru WHERE id_lamaran = :id_lamaran; 
