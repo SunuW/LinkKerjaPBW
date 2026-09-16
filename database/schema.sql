@@ -61,4 +61,16 @@ CREATE TABLE lowongan (
     deskripsi     TEXT,     
     kriteria      TEXT,     status        ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif',     
     dipublikasikan_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
-    FOREIGN KEY (id_perusahaan) REFERENCES perusahaan(id_perusahaan) ON DELETE CASCADE );   
+    FOREIGN KEY (id_perusahaan) REFERENCES perusahaan(id_perusahaan) ON DELETE CASCADE ); 
+CREATE TABLE lamaran (
+    id_lamaran    INT AUTO_INCREMENT PRIMARY KEY,     
+    id_lowongan   INT NOT NULL,     
+    id_profil     INT NOT NULL,     
+    id_dokumen    INT,     
+    status        ENUM('terkirim', 'ditinjau', 'diterima', 'ditolak') NOT NULL DEFAULT 'terkirim',     
+    dikirim_pada  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    diperbarui_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,     
+    FOREIGN KEY (id_lowongan) REFERENCES lowongan(id_lowongan) ON DELETE CASCADE,     
+    FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE,     
+    FOREIGN KEY (id_dokumen) REFERENCES dokumen(id_dokumen) ON DELETE SET NULL,     
+    UNIQUE KEY unik_lamaran (id_lowongan, id_profil))  
