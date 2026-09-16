@@ -162,6 +162,68 @@
                 </div>
 
             </section>
+    
+                        <!-- ---- Publikasi Lowongan (KF-07, UC-05) ---- -->
+            <section data-panel="publikasi" class="hidden">
+                
+                <!-- Kartu Formulir -->
+                <div class="card" style="max-width:640px;">
+                    <h3 style="margin-top:0;">Formulir lowongan baru</h3>
+                    
+                    <form id="form-lowongan">
+                        
+                        <!-- Posisi -->
+                        <div class="field">
+                            <label>Posisi yang dibutuhkan</label>
+                            <input id="in-posisi" placeholder="Contoh: Frontend Developer" required>
+                        </div>
+                        
+                        <!-- Grid Bidang & Lokasi -->
+                        <div class="grid-2">
+                            <div class="field">
+                                <label>Bidang</label>
+                                <input id="in-bidang" placeholder="Teknologi Informasi" required>
+                            </div>
+                            <div class="field">
+                                <label>Lokasi</label>
+                                <input id="in-lokasi" placeholder="Madiun" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Tipe Kerja -->
+                        <div class="field">
+                            <label>Tipe kerja</label>
+                            <select id="in-tipe">
+                                <option value="full_time">Full-time</option>
+                                <option value="part_time">Part-time</option>
+                                <option value="magang">Magang</option>
+                                <option value="kontrak">Kontrak</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Deskripsi Pekerjaan -->
+                        <div class="field">
+                            <label>Deskripsi pekerjaan</label>
+                            <textarea id="in-deskripsi" rows="3" placeholder="Jelaskan tanggung jawab pekerjaan" required></textarea>
+                        </div>
+                        
+                        <!-- Kriteria Kandidat -->
+                        <div class="field">
+                            <label>Kriteria kandidat</label>
+                            <textarea id="in-kriteria" rows="3" placeholder="Contoh: menguasai HTML/CSS/JS" required></textarea>
+                        </div>
+                        
+                        <!-- Tombol Aksi -->
+                        <div style="display:flex; gap:10px;">
+                            <button type="submit" class="btn btn-primary">Unggah</button>
+                            <button type="reset" class="btn btn-ghost">Batal</button>
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+                
+            </section>
 
 </body>
 </html>
