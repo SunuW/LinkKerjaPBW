@@ -80,14 +80,22 @@ function renderPencarian() {
     : `<div class="empty-state">Tidak ditemukan hasil yang relevan.</div>`; 
 } 
 function cardLowongan(l) {
-    return<div class="rows">
-        <div style="displlay:flex: gap:12px; align-items:center;">
+    return `
+    <div class="row">
+        <div style="display: flex; gap: 12px; align-items: center;">
             <div class="job-logo"></div>
             <div>
                 <div style="font-weight:600;">${l.posisi}</div>
-                <div style="font-sized:0.82rem; color:var(--ink-soft);">${l.perusahaan} ${l.lokasi} . ${l.tipe}</div>
+                <div style="font-size:0.82rem; color:var(--ink-soft);">${l.perusahaan} • ${l.lokasi} • ${l.tipe}</div>
             </div>
         </div>
-        <button class="btn btn-outline" onClick="lihatDetail(${1.id}">Lihat Detail</button>
-    </div>
+        <button class="btn btn-outline" onclick="lihatDetail(${l.id})">Lihat Detail</button>
+    </div>`;
 }
+
+// --- rekomendasi beranda (KF-04) ---
+function renderRekomendasi() {
+    document.getElementById("list-rekomendasi").innerHTML = lowonganData.slice(0,2).map(cardLowongan).join("");
+}
+
+
