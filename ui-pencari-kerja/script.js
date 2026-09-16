@@ -62,3 +62,32 @@ function setPanel(view) {
     document.getElementById("page-title").textContent = titles[view][0];
     document.getElementById("page-subtitle").textContent = titles[view][1]; 
 }
+
+// --- filter pencarian (KF-03) ---
+document.getElementById("filter-kata-kunci").addEventListener("input", renderPencarian);
+document.getElementById("filter-bidang").addEventListener("change", renderPencarian);
+  
+function renderPencarian() { 
+  const kata = document.getElementById("filter-kata-kunci").value.toLowerCase(); 
+  const bidang = document.getElementById("filter-bidang").value; 
+  let data = lowonganData.filter(l => 
+    (!kata || `${l.posisi} ${l.lokasi} ${l.perusahaan}`.toLowerCase().includes(kata)) 
+&& 
+    (!bidang || l.bidang === bidang) 
+  ); 
+  const el = document.getElementById("list-lowongan"); 
+  el.innerHTML = data.length ? data.map(cardLowongan).join("") 
+    : `<div class="empty-state">Tidak ditemukan hasil yang relevan.</div>`; 
+} 
+function cardLowongan(l) {
+    return<div class="rows">
+        <div style="displlay:flex: gap:12px; align-items:center;">
+            <div class="job-logo"></div>
+            <div>
+                <div style="font-weight:600;">${l.posisi}</div>
+                <div style="font-sized:0.82rem; color:var(--ink-soft);">${l.perusahaan} ${l.lokasi} . ${l.tipe}</div>
+            </div>
+        </div>
+        <button class="btn btn-outline" onClick="lihatDetail(${1.id}">Lihat Detail</button>
+    </div>
+}
