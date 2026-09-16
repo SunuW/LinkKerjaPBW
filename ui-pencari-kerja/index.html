@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-eidth, initial-scaled=1.0">
+        <title>LinkKerja - Pencari Kerja</title>
+        <link rel="stylesheet" href="../shared/style.css">
+    </head>
+    <body>
+
+        <!-- ===AUTH=== -->
+         <section id="view-auth" class="auth-wrap">
+            <div class="auth-hero">
+                <div class="brand" style="font-size: 1.4rem;"><span class="brand-mark" style="background: #fff;"></span></div>
+                <h2>Temukan pekerjaan yang cocok untuk Anda.</h2>
+                <p>Cari lowongan, kelola CV, dan pantau status lamara dalam satu tempat - sisi Pencari Kerja.</p>
+            </div>
+            <diiv class="auth-form-wrap">
+                <div class="auth-card">
+                    <div class="role-toggle">
+                        <button class="active" id="tab-login">Masuk</button>
+                        <button id="tab-register">Daftar</button>
+                    </div>
+
+                    <form id="form-login">
+                        <div class="field"><label>Email</label><input type="email" placeholder="nama@gmail.com" required></div>
+                        <div class="field"><label>Kata sandi</label><input type="password" placeholder="••••••••" required></div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">Masuk</button>
+                        <p style="font-size: 0.82rem; color:var(--ink-soft); margin-top: 12px;">Belum punya akun? Klik "Daftar" di atas.</p>
+                    </form>
+
+                    <form id="form-register" class="hidden">
+                        <div class="field"><label>Nama lengkap</label><input type="text" placeholder="Lathifah Widya Zahra" required>></div>
+                        <div class="field"><label>Email</label><input type="email" placeholder="nama@gmail.com" required></div>
+                        <div class="field"><label>Kata sandi</label><input type="password" placeholder="Minimal 8 karakter" required></div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">Daftar Sekarang</button>
+                    </form>
+                </div>
+            </diiv>
+         </section>
+    </body>
+</html>
