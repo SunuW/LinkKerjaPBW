@@ -168,3 +168,9 @@ ink); }
 }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size:
+0.76rem; font-weight: 600; }
+.badge-aktif, .badge-diterima { background: #e7f9ef; color: var(--success); }
+.badge-nonaktif, .badge-ditolak { background: #fdecec; color: var(--danger); }
+.badge-ditinjau, .badge-terkirim { background: #fff4e0; color: var(--warning); }
