@@ -74,3 +74,22 @@ CREATE TABLE lamaran (
     FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE,     
     FOREIGN KEY (id_dokumen) REFERENCES dokumen(id_dokumen) ON DELETE SET NULL,     
     UNIQUE KEY unik_lamaran (id_lowongan, id_profil))  
+CREATE TABLE lamaran (     
+    id_lamaran    INT AUTO_INCREMENT PRIMARY KEY,     
+    id_lowongan   INT NOT NULL,     
+    id_profil     INT NOT NULL,     
+    id_dokumen    INT,     status        ENUM('terkirim', 'ditinjau', 'diterima', 'ditolak') NOT NULL DEFAULT 'terkirim',     
+    dikirim_pada  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    diperbarui_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,     
+    FOREIGN KEY (id_lowongan) REFERENCES lowongan(id_lowongan) ON DELETE CASCADE,     
+    FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE,     
+    FOREIGN KEY (id_dokumen) REFERENCES dokumen(id_dokumen) ON DELETE SET NULL,     
+    UNIQUE KEY unik_lamaran (id_lowongan, id_profil)) -- satu pencari kerja hanya bisa melamar 1x per lowongan );   
+CREATE TABLE notifikasi (     
+    id_notifikasi INT AUTO_INCREMENT PRIMARY KEY,     
+    id_user       INT NOT NULL,     
+    judul         VARCHAR(150) NOT NULL,     
+    pesan         TEXT NOT NULL,     
+    sudah_dibaca  BOOLEAN NOT NULL DEFAULT FALSE,     
+    dibuat_pada   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE );   
