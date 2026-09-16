@@ -105,7 +105,35 @@
                     <section data-panel="lamaran" class="hidden">
                         <div class="card"><div id=list-lamaran-saya"></div></div>
                     </section>
+
+                    <!-- ===Profil & CV (KF-01, KF-02, UC-02)=== -->
+                    <section data-panel="profil" class="hidden">
+                        <div class="card" style="max-width: 640px; margin-bottom: 16px;">
+                            <h3 style="margin-top: 0;">Data diri</h3>
+                            <div class="grid-2"></div>
+                            <div class="field"><label>Nama lengkap</label><input value="Lathifah Widya Zahra"></div>
+                            <div class="field"><label>No. telepon</label><input value="081234567891"></div> 
+                            <div class="field"><label>Alamar</label><input value="Madiun, Jawa Timur"></div>
+                            <div class="field"><label>Ringkasan profesional></label><textarea rows="3">Mahasiswa TRPL yang tertarik pada pengembangan web.</textarea></div>
+                            <button class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+
+                        <div class="card" style="max-width: 640px; margin-bottom: 16px;">
+                            <h3 style="margin-top: 0;">Riwayat pendidikan &amp;pengalaman</h3>
+                            <div id="list-riwayat"></div>
+                            <button class="btn btn-outline" style="margin-top: 10px;" onclick="tombolRiwayat()">+ Tambah riwayat</button>
+                        </div>
+
+                        <div class="card" style="max-width: 640px;">
+                            <h3 style="margin-top: 0;">Dokumen pendukung</h3>
+                            <p style="font-size: 0.85rem; color:var(--ink-soft); margin-top: -6px;">Format yang diterima: PDF atau JPG.</p>
+                            <div id="list-dokumen"></div>
+                            <label class="btn btn-outline" style="margin-top: 10px; cursor: pointer;">+ Unggah dokumen<input type="file" accept=".pdf, .jpg, .jpeg" style="display: none;" id="input-dokumen"></label>
+                        </div>
+                    </section>
             </main>
           </div>
+          <div id="toast" class="toast hidden"></div>
+          <script src="script.js"></script>
     </body>
 </html>
