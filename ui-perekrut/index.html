@@ -235,6 +235,41 @@
                 
             </section>
 
+                        <!-- ---- Kandidat Masuk (UC-06) ---- -->
+            <section data-panel="kandidat" class="hidden">
+                
+                <!-- Kartu Filter Pencarian -->
+                <div class="card" style="margin-bottom:16px;">
+                    <div class="grid-2">
+                        
+                        <!-- Filter Lowongan -->
+                        <div class="field" style="margin:0;">
+                            <label>Filter berdasarkan lowongan</label>
+                            <select id="filter-lowongan"></select>
+                        </div>
+                        
+                        <!-- Filter Status Lamaran -->
+                        <div class="field" style="margin:0;">
+                            <label>Filter status</label>
+                            <select id="filter-status">
+                                <option value="">Semua status</option>
+                                <option value="terkirim">Terkirim</option>
+                                <option value="ditinjau">Ditinjau</option>
+                                <option value="diterima">Diterima</option>
+                                <option value="ditolak">Ditolak</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Kartu Daftar Kandidat -->
+                <div class="card">
+                    <div id="list-kandidat"></div>
+                </div>
+
+            </section>
+
 
 </body>
 </html>
