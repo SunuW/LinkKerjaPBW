@@ -36,3 +36,25 @@ function switchAuthTab(which) {
         showToast("Berhasil masuk sebagai Perekrut");
     });
 });
+
+// --- navigation ---
+document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        
+        const view = btn.dataset.view;
+        document.querySelectorAll("[data-panel]").forEach(p => p.classList.toggle("hidden", p.dataset.panel !== view));
+        
+        const titles = {
+            dashboard: ["Dasbor", "Ringkasan aktivitas rekrutmen Anda hari ini."],
+            publikasi: ["Publikasi Lowongan", "Buat lowongan baru agar dapat dilihat pencari kerja."],
+            lowongan: ["Manajemen Lowongan", "Kelola, ubah, atau nonaktifkan lowongan yang sudah dipasang."],
+            kandidat: ["Kandidat Masuk", "Tinjau pelamar dan tentukan status lamaran mereka."],
+            perusahaan: ["Profil Perusahaan", "Data ini akan tampil pada setiap lowongan yang Anda pasang."]
+        };
+        
+        document.getElementById("page-title").textContent = titles[view][0];
+        document.getElementById("page-subtitle").textContent = titles[view][1];
+    });
+});
