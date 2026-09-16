@@ -50,4 +50,15 @@ CREATE TABLE perusahaan (
     lokasi        VARCHAR(150),     
     deskripsi     TEXT,     
     logo          VARCHAR(255),     
-    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE );   
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ); 
+CREATE TABLE lowongan (     
+    id_lowongan   INT AUTO_INCREMENT PRIMARY KEY,     
+    id_perusahaan INT NOT NULL,     
+    judul_posisi  VARCHAR(150) NOT NULL,     
+    bidang        VARCHAR(100),     
+    lokasi        VARCHAR(150),     
+    tipe_kerja    ENUM('full_time', 'part_time', 'magang', 'kontrak') NOT NULL,     
+    deskripsi     TEXT,     
+    kriteria      TEXT,     status        ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif',     
+    dipublikasikan_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    FOREIGN KEY (id_perusahaan) REFERENCES perusahaan(id_perusahaan) ON DELETE CASCADE );   
