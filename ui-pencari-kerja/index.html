@@ -76,7 +76,24 @@
                     </div>
                  </setion>
 
-                 
+                 <!-- ===Cari lowongan dengan filter (KF-03, UC-08)=== -->
+                  <section data-panel="cari" class="hidden">
+                    <div class="card" style="margin-bottom: 16px;">
+                        <div class="grid-2">
+                            <div class="field" style="margin:0;"><label>Kata kunci / lokasi</label><input id="filter=kata-kunci" placeholder="Contoh: Madiun, Frontend"></div>
+                            <div class="field" style="margin: 0;">
+                                <label>Bidang</label>
+                                <select id="filter-bidang">
+                                    <option value="">Semua bidang</option>
+                                    <option>Teknologi</option>
+                                    <option>Desain</option>
+                                    <option>Pemasaran</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card"><div id="list-lowongan"></div>
+                  </section>
             </main>
           </div>
     </body>
