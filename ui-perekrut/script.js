@@ -128,3 +128,66 @@ function hapusLowongan(id) {
     renderAll();
     showToast("Lowongan dihapus dari publikasi");
 }
+
+// --- render kandidat masuk (UC-06) ---
+function populateFilterLowongan() {
+    const sel = document.getElementById("filter-lowongan");
+    sel.innerHTML = `<option value="">Semua lowongan</option>` +
+        lowonganList.map(l => `<option value="${l.id}">${l.posisi}</option>`).join("");
+}
+
+document.getElementById("filter-lowongan").addEventListener("change", renderKandidat);
+document.getElementById("filter-status").addEventListener("change", renderKandidat);
+
+function renderKandidat() {
+    const filterLowongan = document.getElementById("filter-lowongan").value;
+    const filterStatus = document.getElementById("filter-status").value;
+    
+    let data = kandidatList;
+    if (filterLowongan) data = data.filter(k => String(k.idLowongan) === filterLowongan);
+    if (filterStatus) data = data.filter(k => k.status === filterStatus);
+    
+    const el = document.getElementById("list-kandidat");
+    if (data.length === 0) {
+        el.innerHTML = `<div class="empty-state">Belum ada lamaran yang cocok dengan filter ini.</div>`;
+        return;
+    }
+    
+    el.innerHTML = data.map(k => `
+        <div class="row">
+            <div style="display:flex; gap:12px; align-items:center;">
+                <div class="cand-avatar"></div>
+                <div>
+                    <div style="font-weight:600;">${k.nama}</div>
+                    <div style="font-size:0.82rem; color:var(--ink-soft);">Melamar: ${k.posisiDilamar} · ${k.tanggal}</div>
+                </div>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="badge badge-${k.status}">${labelStatus(k.status)}</span>
+                <button class="btn btn-outline" onclick="lihatDokumen('${k.nama}')">Lihat Dokumen</button>
+                <button class="btn btn-success" onclick="ubahStatus(${k.id}, 'diterima')">Terima</button>
+                <button class="btn btn-danger" onclick="ubahStatus(${k.id}, 'ditolak')">Tolak</button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function labelStatus(s) {
+    return { 
+        terkirim: "Terkirim", 
+        ditinjau: "Ditinjau", 
+        diterima: "Diterima", 
+        ditolak: "Ditolak" 
+    }[s] || s;
+}
+
+function ubahStatus(id, status) {
+    const k = kandidatList.find(x => x.id === id);
+    k.status = status;
+    renderAll();
+    showToast(`Status lamaran ${k.nama} diperbarui menjadi "${labelStatus(status)}"`);
+}
+
+function lihatDokumen(nama) {
+    showToast(`Membuka dokumen lamaran milik ${nama} (contoh — belum tersambung penyimpanan file)`);
+}
