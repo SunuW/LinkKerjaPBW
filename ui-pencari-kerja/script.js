@@ -155,3 +155,63 @@ function renderLamaranSaya() {
 function labelStatus(s) { 
     return { terkirim: "Terkirim", ditinjau: "Ditinjau", diterima: "Diterima", ditolak: "Ditolak" }[s] || s; 
 }
+
+// --- profil: riwayat & dokumen (KF-01, KF-02) ---
+// --- profil: riwayat & dokumen (KF-01, KF-02) --- 
+function renderRiwayat() { 
+  document.getElementById("list-riwayat").innerHTML = riwayatSaya.map((r, i) => ` 
+    <div class="row"> 
+      <div> 
+        <div style="font-weight:600;">${r.jenjang} — ${r.institusi}</div> 
+        <div style="font-size:0.82rem; color:var(--ink-soft);">${r.tahun}</div> 
+      </div> 
+      <button class="btn btn-ghost" onclick="hapusRiwayat(${i})">Hapus</button> 
+    </div> 
+  `).join(""); 
+} 
+
+function tambahRiwayat() { 
+  riwayatSaya.push({ jenjang: "D-IV", institusi: "Politeknik Negeri Madiun", tahun: "2023 - sekarang" }); 
+  renderRiwayat(); 
+}
+
+function hapusRiwayat(i) { riwayatSaya.splice(i, 1); renderRiwayat(); } 
+  
+function renderDokumen() { 
+  document.getElementById("list-dokumen").innerHTML = dokumenSaya.map((d, i) => ` 
+    <div class="row"> 
+      <div>🏠 ${d.nama}</div> 
+      <button class="btn btn-ghost" onclick="hapusDokumen(${i})">Hapus</button> 
+    </div> 
+  `).join("") || `<div class="empty-state">Belum ada dokumen diunggah.</div>`; 
+} 
+  
+function hapusDokumen(i) { dokumenSaya.splice(i, 1); renderDokumen(); } 
+  
+document.getElementById("input-dokumen").addEventListener("change", e => { 
+  const file = e.target.files[0]; 
+  if (!file) return; 
+  const ext = file.name.split(".").pop().toLowerCase(); 
+  if (!["pdf", "jpg", "jpeg"].includes(ext)) { 
+    showToast("Unggah file dalam bentuk PDF atau JPG"); 
+    return; 
+  } 
+  dokumenSaya.push({ nama: file.name }); 
+  renderDokumen(); 
+}); 
+  
+function showToast(msg) { 
+  const t = document.getElementById("toast"); 
+  t.textContent = msg; 
+  t.classList.remove("hidden"); 
+  clearTimeout(window._toastTimer); 
+  window._toastTimer = setTimeout(() => t.classList.add("hidden"), 2600); 
+} 
+  
+function renderAll() { 
+  renderRekomendasi(); 
+  renderPencarian(); 
+  renderLamaranSaya(); 
+  renderRiwayat(); 
+  renderDokumen(); 
+}
