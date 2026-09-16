@@ -42,4 +42,12 @@ CREATE TABLE dokumen (
     path_file     VARCHAR(255) NOT NULL,     
     diunggah_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
     FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE ); 
-
+CREATE TABLE perusahaan (     
+    id_perusahaan INT AUTO_INCREMENT PRIMARY KEY,     
+    id_user       INT NOT NULL,     
+    nama_perusahaan VARCHAR(150) NOT NULL,     
+    bidang        VARCHAR(100),     
+    lokasi        VARCHAR(150),     
+    deskripsi     TEXT,     
+    logo          VARCHAR(255),     
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE );   
