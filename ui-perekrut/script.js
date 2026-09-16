@@ -191,3 +191,35 @@ function ubahStatus(id, status) {
 function lihatDokumen(nama) {
     showToast(`Membuka dokumen lamaran milik ${nama} (contoh — belum tersambung penyimpanan file)`);
 }
+
+// --- dashboard ---
+function renderDashboard() {
+ document.getElementById("stat-lowongan").textContent = lowonganList.filter(l =>
+l.status === "aktif").length;
+ document.getElementById("stat-lamaran").textContent = kandidatList.length;
+ document.getElementById("stat-ditinjau").textContent = kandidatList.filter(k =>
+k.status === "ditinjau" || k.status === "terkirim").length;
+ document.getElementById("stat-diterima").textContent = kandidatList.filter(k =>
+k.status === "diterima").length;
+ const recent = document.getElementById("dashboard-recent");
+ const items = [...kandidatList].slice(-4).reverse();
+ recent.innerHTML = items.length ? items.map(k => `
+ <div class="row">
+ <div>${k.nama} melamar sebagai <strong>${k.posisiDilamar}</strong></div>
+ <span class="badge badge-${k.status}">${labelStatus(k.status)}</span>
+ </div>
+ `).join("") : `<div class="empty-state">Belum ada aktivitas.</div>`;
+}
+function showToast(msg) {
+ const t = document.getElementById("toast");
+ t.textContent = msg;
+ t.classList.remove("hidden");
+ clearTimeout(window._toastTimer);
+ window._toastTimer = setTimeout(() => t.classList.add("hidden"), 2600);
+}
+function renderAll() {
+ renderDashboard();
+ renderLowongan();
+ populateFilterLowongan();
+ renderKandidat();
+}
