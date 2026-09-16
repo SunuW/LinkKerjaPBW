@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkKerja — Perekrut</title>
+    <link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+
+    <!-- ================= AUTH ================= -->
+    <section id="view-auth" class="auth-wrap">
+        
+        <!-- Sisi Hero / Informasi -->
+        <div class="auth-hero">
+            <div class="brand" style="font-size:1.4rem;">
+                <span class="brand-mark" style="background:#fff;"></span>LinkKerja
+            </div>
+            <h2>Temukan kandidat terbaik untuk perusahaan Anda.</h2>
+            <p>Pasang lowongan, kelola pelamar, dan pantau proses rekrutmen dalam satu dasbor — sisi Perekrut.</p>
+        </div>
+
+        <!-- Sisi Form Kontainer -->
+        <div class="auth-form-wrap">
+            <div class="auth-card">
+                
+                <!-- Tombol Navigasi Tab -->
+                <div class="role-toggle">
+                    <button class="active" id="tab-login">Masuk</button>
+                    <button id="tab-register">Daftar</button>
+                </div>
+
+                <!-- Form Masuk (Login) -->
+                <form id="form-login">
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" placeholder="perekrut@perusahaan.com" required>
+                    </div>
+                    <div class="field">
+                        <label>Kata sandi</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Masuk</button>
+                    <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:12px;">
+                        Belum punya akun perekrut? Klik "Daftar" di atas.
+                    </p>
+                </form>
+
+                <!-- Form Daftar (Register) -->
+                <form id="form-register" class="hidden">
+                    <div class="field">
+                        <label>Nama Anda</label>
+                        <input type="text" placeholder="Nabil Sunu Widyadhana" required>
+                    </div>
+                    <div class="field">
+                        <label>Nama perusahaan</label>
+                        <input type="text" placeholder="PT Teknologi Madiun" required>
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" placeholder="perekrut@perusahaan.com" required>
+                    </div>
+                    <div class="field">
+                        <label>Kata sandi</label>
+                        <input type="password" placeholder="Minimal 8 karakter" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Daftar Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
