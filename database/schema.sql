@@ -16,4 +16,30 @@ CREATE TABLE profil_pencari_kerja (
      ringkasan     TEXT,     
      foto_profil   VARCHAR(255),     
      FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ); 
-     
+CREATE TABLE riwayat_pendidikan (     
+    id_pendidikan INT AUTO_INCREMENT PRIMARY KEY,     
+    id_profil     INT NOT NULL,     
+    jenjang       VARCHAR(50),    
+    institusi     VARCHAR(150),     
+    jurusan       VARCHAR(100),     
+    tahun_mulai   YEAR,     
+    tahun_selesai YEAR,     
+    FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE ); 
+CREATE TABLE pengalaman_kerja (    
+    id_pengalaman INT AUTO_INCREMENT PRIMARY KEY,     
+    id_profil     INT NOT NULL,     
+    posisi        VARCHAR(100),     
+    perusahaan    VARCHAR(150),     
+    tahun_mulai   YEAR,     
+    tahun_selesai YEAR,     
+    deskripsi     TEXT,     
+    FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE ); 
+CREATE TABLE dokumen (     
+    id_dokumen    INT AUTO_INCREMENT PRIMARY KEY,     
+    id_profil     INT NOT NULL,     
+    jenis         ENUM('cv', 'sertifikat', 'portofolio', 'lainnya') NOT NULL,     
+    nama_file     VARCHAR(255) NOT NULL,     
+    path_file     VARCHAR(255) NOT NULL,     
+    diunggah_pada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     
+    FOREIGN KEY (id_profil) REFERENCES profil_pencari_kerja(id_profil) ON DELETE CASCADE ); 
+
