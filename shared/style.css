@@ -1,0 +1,25 @@
+:root {
+ --primary: #00c8ff;
+ --secondary: #5000ff;
+ --gradient: linear-gradient(120deg, var(--primary), var(--secondary));
+ --ink: #101324;
+ --ink-soft: #545a72;
+ --bg: #f5f7fb;
+ --surface: #ffffff;
+ --border: #e3e7f0;
+ --success: #17b26a;
+ --danger: #e5484d;
+ --warning: #f5a524;
+ --radius: 14px;
+ --shadow: 0 8px 24px rgba(16, 19, 36, 0.08);
+ font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+body {
+ margin: 0;
+ font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+ background: var(--bg);
+ color: var(--ink);
+}
+a { color: inherit; text-decoration: none; }
