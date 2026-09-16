@@ -44,3 +44,21 @@ renderAll();
 showToast("Behasil masuk sebagai Pencari Kerja");
 }));
 
+// --- navigation ---
+document.querySelectorAll(".nav-btn").forEach(btn => { 
+  btn.addEventListener("click", () => setPanel(btn.dataset.view)); 
+});
+
+function setPanel(view) {
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.view === view));
+    document.querySelectorAll("[data-panel]").forEach(p => p.classList.toggle("hidden", p.dataset.panel !== view));
+    const titles = {
+        beranda: ["Beranda", "Rekomendasi lowongan untuk Anda hari ini"],
+        cari: ["Cari Lowongan", "Gunakan filter untuk menemukan lowongan yang"],
+        detail: ["Detail Lowongan", "Tinjau detail sebelum mengirim lamaran."], 
+        lamaran: ["Lamaran Saya", "Pantau status setiap lamaran yang Anda kirim."], 
+        profil: ["Profil & CV", "Kelola data diri, riwayat, dan dokumen pendukung."]
+    };
+    document.getElementById("page-title").textContent = titles[view][0];
+    document.getElementById("page-subtitle").textContent = titles[view][1]; 
+}
