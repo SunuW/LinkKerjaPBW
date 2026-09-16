@@ -58,3 +58,24 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
         document.getElementById("page-subtitle").textContent = titles[view][1];
     });
 });
+
+// --- form lowongan baru (KF-07 / UC-05) ---
+document.getElementById("form-lowongan").addEventListener("submit", e => {
+    e.preventDefault();
+    
+    const baru = {
+        id: nextLowonganId++,
+        posisi: document.getElementById("in-posisi").value,
+        bidang: document.getElementById("in-bidang").value,
+        lokasi: document.getElementById("in-lokasi").value,
+        tipe: document.getElementById("in-tipe").value,
+        status: "aktif"
+    };
+    
+    lowonganList.push(baru);
+    e.target.reset();
+    renderAll();
+    
+    showToast("Lowongan berhasil dipublikasikan");
+    document.querySelector('.nav-btn[data-view="lowongan"]').click();
+});
