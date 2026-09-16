@@ -79,3 +79,52 @@ document.getElementById("form-lowongan").addEventListener("submit", e => {
     showToast("Lowongan berhasil dipublikasikan");
     document.querySelector('.nav-btn[data-view="lowongan"]').click();
 });
+
+// --- render manajemen lowongan ---
+function renderLowongan() {
+    const el = document.getElementById("list-lowongan");
+    
+    if (lowonganList.length === 0) {
+        el.innerHTML = `<div class="empty-state">Belum ada lowongan. Buat lowongan pertama Anda di menu "Publikasi Lowongan".</div>`;
+        return;
+    }
+    
+    el.innerHTML = lowonganList.map(l => `
+        <div class="row">
+            <div style="display:flex; gap:12px; align-items:center;">
+                <div class="job-logo"></div>
+                <div>
+                    <div style="font-weight:600;">${l.posisi}</div>
+                    <div style="font-size:0.82rem; color:var(--ink-soft);">${l.bidang} · ${l.lokasi} · ${labelTipe(l.tipe)}</div>
+                </div>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <span class="badge badge-${l.status}">${l.status === "aktif" ? "Aktif" : "Nonaktif"}</span>
+                <button class="btn btn-outline" onclick="toggleStatusLowongan(${l.id})">${l.status === "aktif" ? "Nonaktifkan" : "Aktifkan"}</button>
+                <button class="btn btn-danger" onclick="hapusLowongan(${l.id})">Hapus</button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function labelTipe(t) {
+    return { 
+        full_time: "Full-time", 
+        part_time: "Part-time", 
+        magang: "Magang", 
+        kontrak: "Kontrak" 
+    }[t] || t;
+}
+
+function toggleStatusLowongan(id) {
+    const l = lowonganList.find(x => x.id === id);
+    l.status = l.status === "aktif" ? "nonaktif" : "aktif";
+    renderAll();
+}
+
+function hapusLowongan(id) {
+    lowonganList = lowonganList.filter(x => x.id !== id);
+    kandidatList = kandidatList.filter(k => k.idLowongan !== id);
+    renderAll();
+    showToast("Lowongan dihapus dari publikasi");
+}
