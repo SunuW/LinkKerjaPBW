@@ -8,7 +8,7 @@
     </head>
     <body>
         <!-- ===AUTH=== -->
-         <section id="view-auth" class="auth-wrap">
+        <section id="view-auth" class="auth-wrap">
             <div class="auth-hero">
                 <div class="brand" style="font-size: 1.4rem;"><span class="brand-mark" style="background: #fff;"></span></div>
                 <h2>Temukan pekerjaan yang cocok untuk Anda.</h2>
@@ -36,6 +36,38 @@
                     </form>
                 </div>
             </diiv>
-         </section>
+        </section>
+        
+        <!-- ===APP=== -->
+        <div id="view-app" class="app-shell hidden">
+            <aside class="sidebar">
+                <div class="brand"><span class="brand-mark"></span>LinkKerja</div>
+                <ul class="nav-list">
+                    <li><button class="nav-btn active" data-view="beranda">🏠 Beranda</button></li> 
+                    <li><button class="nav-btn" data-view="cari">🏠 Cari Lowongan</button></li> 
+                    <li><button class="nav-btn" data-view="lamaran">🏠 Lamaran Saya</button></li> 
+                    <li><button class="nav-btn" data-view="profil">🏠 Profil &amp; CV</button></li> 
+                </ul>
+                <div class="sidebar-footer">LinkKerja - UI Pencari Kerja </div>
+            </aside>
+
+            <main class="main">
+                <div class="topbar">
+                    <div>
+                        <h1 id="page-title">Beranda</h1>
+                        <p id="page-subtitle">Rekomendasi lowongan untuk Anda hari ini.</p>
+                    </div>
+                    <div class="user-chip">
+                        <div class="avatar">LZ</div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem;">Lathifah Widya Zahra</div>
+                            <div style="font-size: 0.76rem; color:var(--ink-soft);">Pencari Kerja</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </main>
+        </div>
     </body>
 </html>
