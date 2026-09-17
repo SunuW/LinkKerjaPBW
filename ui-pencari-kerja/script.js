@@ -132,3 +132,26 @@ function kirimLamaran(idLowongan) {
     renderAll()
     setPanel("lamaran");
 }
+
+// --- lamaran saya / tracker (KF-06, UC-07) --- 
+function renderLamaranSaya() { 
+  const el = document.getElementById("list-lamaran-saya"); 
+  if (lamaranSaya.length === 0) { 
+    el.innerHTML = `<div class="empty-state">Anda belum memiliki riwayat lamaran.</div>`; 
+    return; 
+  } 
+  el.innerHTML = lamaranSaya.map(a => ` 
+    <div class="row"> 
+      <div> 
+        <div style="font-weight:600;">${a.posisi}</div> 
+        <div style="font-size:0.82rem; color:var(--ink-soft);">${a.perusahaan} · Dikirim ${a.tanggal}</div> 
+      </div> 
+      <span class="badge badge-${a.status}">${labelStatus(a.status)}</span> 
+    </div> 
+  `).join(""); 
+} 
+  
+function labelStatus(s) { 
+  return { terkirim: "Terkirim", ditinjau: "Ditinjau", diterima: "Diterima", ditolak: "Ditolak" }[s] || s; 
+} 
+ 
