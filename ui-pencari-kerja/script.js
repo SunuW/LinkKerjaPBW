@@ -17,3 +17,27 @@ let dokumenSaya = [
 ];
 
 let idLamaranAktif = null;
+
+// --- auth --- 
+const tabLogin = document.getElementById("tab-login"); 
+const tabRegister = document.getElementById("tab-register"); 
+const formLogin = document.getElementById("form-login"); 
+const formRegister = document.getElementById("form-register"); 
+  
+tabLogin.addEventListener("click", () => switchAuthTab("login")); 
+tabRegister.addEventListener("click", () => switchAuthTab("register")); 
+  
+function switchAuthTab(which) { 
+  tabLogin.classList.toggle("active", which === "login"); 
+  tabRegister.classList.toggle("active", which === "register"); 
+  formLogin.classList.toggle("hidden", which !== "login"); 
+  formRegister.classList.toggle("hidden", which !== "register"); 
+} 
+  
+[formLogin, formRegister].forEach(f => f.addEventListener("submit", e => { 
+  e.preventDefault(); 
+  document.getElementById("view-auth").classList.add("hidden"); 
+  document.getElementById("view-app").classList.remove("hidden"); 
+  renderAll(); 
+  showToast("Berhasil masuk sebagai Pencari Kerja"); 
+}));
