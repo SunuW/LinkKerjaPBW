@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkKerja — Perekrut</title>
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+
+<!-- ================= AUTH ================= -->
+<section id="view-auth" class="auth-wrap">
+  <div class="auth-hero">
+    <div class="brand" style="font-size:1.4rem;"><span class="brand-mark" style="background:#fff;"></span>LinkKerja</div>
+    <h2>Temukan kandidat terbaik untuk perusahaan Anda.</h2>
+    <p>Pasang lowongan, kelola pelamar, dan pantau proses rekrutmen dalam satu dasbor — sisi Perekrut.</p>
+  </div>
+  <div class="auth-form-wrap">
+    <div class="auth-card">
+      <div class="role-toggle">
+        <button class="active" id="tab-login">Masuk</button>
+        <button id="tab-register">Daftar</button>
+      </div>
+
+      <form id="form-login">
+        <div class="field"><label>Email</label><input type="email" placeholder="perekrut@perusahaan.com" required></div>
+        <div class="field"><label>Kata sandi</label><input type="password" placeholder="••••••••" required></div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Masuk</button>
+        <p style="font-size:0.82rem; color:var(--ink-soft); margin-top:12px;">Belum punya akun perekrut? Klik "Daftar" di atas.</p>
+      </form>
+
+      <form id="form-register" class="hidden">
+        <div class="field"><label>Nama Anda</label><input type="text" placeholder="Nabil Sunu Widyadhana" required></div>
+        <div class="field"><label>Nama perusahaan</label><input type="text" placeholder="PT Teknologi Madiun" required></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="perekrut@perusahaan.com" required></div>
+        <div class="field"><label>Kata sandi</label><input type="password" placeholder="Minimal 8 karakter" required></div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Daftar Sekarang</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APP ================= -->
+<div id="view-app" class="app-shell hidden">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"></span>LinkKerja</div>
+    <ul class="nav-list">
+      <li><button class="nav-btn active" data-view="dashboard">📊 Dasbor</button></li>
+      <li><button class="nav-btn" data-view="publikasi">📝 Publikasi Lowongan</button></li>
+      <li><button class="nav-btn" data-view="lowongan">💼 Manajemen Lowongan</button></li>
+      <li><button class="nav-btn" data-view="kandidat">👥 Kandidat Masuk</button></li>
+      <li><button class="nav-btn" data-view="perusahaan">🏢 Profil Perusahaan</button></li>
+    </ul>
+    <div class="sidebar-footer">
+      LinkKerja · UI Perekrut<br>Dikerjakan oleh Nabil Sunu Widyadhana
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="page-title">Dasbor</h1>
+        <p id="page-subtitle">Ringkasan aktivitas rekrutmen Anda hari ini.</p>
+      </div>
+      <div class="user-chip">
+        <div class="avatar">PT</div>
+        <div>
+          <div style="font-weight:600; font-size:0.9rem;">PT Teknologi Madiun</div>
+          <div style="font-size:0.76rem; color:var(--ink-soft);">Perekrut</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Dashboard ---- -->
+    <section data-panel="dashboard">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="accent"></div><div class="num" id="stat-lowongan">0</div><div class="label">Lowongan aktif</div></div>
+        <div class="stat-card"><div class="accent"></div><div class="num" id="stat-lamaran">0</div><div class="label">Lamaran masuk</div></div>
+        <div class="stat-card"><div class="accent"></div><div class="num" id="stat-ditinjau">0</div><div class="label">Menunggu ditinjau</div></div>
+        <div class="stat-card"><div class="accent"></div><div class="num" id="stat-diterima">0</div><div class="label">Kandidat diterima</div></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">Lamaran terbaru</h3>
+        <div id="dashboard-recent"></div>
+      </div>
+    </section>
+
+    <!-- ---- Publikasi Lowongan (KF-07, UC-05) ---- -->
+    <section data-panel="publikasi" class="hidden">
+      <div class="card" style="max-width:640px;">
+        <h3 style="margin-top:0;">Formulir lowongan baru</h3>
+        <form id="form-lowongan">
+          <div class="field"><label>Posisi yang dibutuhkan</label><input required id="in-posisi" placeholder="Contoh: Frontend Developer"></div>
+          <div class="grid-2">
+            <div class="field"><label>Bidang</label><input required id="in-bidang" placeholder="Teknologi Informasi"></div>
+            <div class="field"><label>Lokasi</label><input required id="in-lokasi" placeholder="Madiun"></div>
+          </div>
+          <div class="field">
+            <label>Tipe kerja</label>
+            <select id="in-tipe">
+              <option value="full_time">Full-time</option>
+              <option value="part_time">Part-time</option>
+              <option value="magang">Magang</option>
+              <option value="kontrak">Kontrak</option>
+            </select>
+          </div>
+          <div class="field"><label>Deskripsi pekerjaan</label><textarea id="in-deskripsi" rows="3" required placeholder="Jelaskan tanggung jawab pekerjaan"></textarea></div>
+          <div class="field"><label>Kriteria kandidat</label><textarea id="in-kriteria" rows="3" required placeholder="Contoh: menguasai HTML/CSS/JS"></textarea></div>
+          <div style="display:flex; gap:10px;">
+            <button type="submit" class="btn btn-primary">Unggah</button>
+            <button type="reset" class="btn btn-ghost">Batal</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ---- Manajemen Lowongan ---- -->
+    <section data-panel="lowongan" class="hidden">
+      <div class="card">
+        <div id="list-lowongan"></div>
+      </div>
+    </section>
+
+    <!-- ---- Kandidat Masuk (UC-06) ---- -->
+    <section data-panel="kandidat" class="hidden">
+      <div class="card" style="margin-bottom:16px;">
+        <div class="grid-2">
+          <div class="field" style="margin:0;">
+            <label>Filter berdasarkan lowongan</label>
+            <select id="filter-lowongan"></select>
+          </div>
+          <div class="field" style="margin:0;">
+            <label>Filter status</label>
+            <select id="filter-status">
+              <option value="">Semua status</option>
+              <option value="terkirim">Terkirim</option>
+              <option value="ditinjau">Ditinjau</option>
+              <option value="diterima">Diterima</option>
+              <option value="ditolak">Ditolak</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div id="list-kandidat"></div>
+      </div>
+    </section>
+
+    <!-- ---- Profil Perusahaan ---- -->
+    <section data-panel="perusahaan" class="hidden">
+      <div class="card" style="max-width:560px;">
+        <h3 style="margin-top:0;">Data perusahaan</h3>
+        <div class="field"><label>Nama perusahaan</label><input value="PT Teknologi Madiun"></div>
+        <div class="field"><label>Bidang</label><input value="Teknologi Informasi"></div>
+        <div class="field"><label>Lokasi</label><input value="Madiun, Jawa Timur"></div>
+        <div class="field"><label>Deskripsi</label><textarea rows="3">Perusahaan pengembang perangkat lunak.</textarea></div>
+        <button class="btn btn-primary">Simpan Perubahan</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
