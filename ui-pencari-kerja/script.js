@@ -90,3 +90,8 @@ function cardLowongan(l) {
       <button class="btn btn-outline" onclick="lihatDetail(${l.id})">Lihat Detail</button> 
     </div>`; 
 } 
+
+// -- rekomendasi beranda (KF-04) ---
+function renderRekomendasi() {
+    document.getElementById("list-rekomendasi").innerHTML = lowonganData.slice(0,2).map(cardLowongan).join("");
+}
